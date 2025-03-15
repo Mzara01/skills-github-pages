@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYGIS - Services SIG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            background: url('Background.webp') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+        }
+        .search-box {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 25px;
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-box input {
+            width: 80%;
+            border: none;
+            padding: 10px;
+            border-radius: 25px;
+            outline: none;
+            font-size: 16px;
+        }
+        .search-box button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            background-color: #0088cc;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .slides {
+            display: flex;
+            width: 300%;
+            animation: slide 10s infinite linear;
+        }
+        .slides img {
+            width: 100%;
+            height: 400px;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            33% { transform: translateX(-100%); }
+            66% { transform: translateX(-200%); }
+            100% { transform: translateX(0); }
+        }
+        .contact-btn {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            background-color: #0088cc;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        .about {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <div class="navbar">
+        <a href="Accueil.html">Accueil</a>
+        <a href="Apropos.html">À propos</a>
+        <a href="contactez-nousNN.html">Contact</a>
+        <a href="services.html">Services</a>
+        <a href="géologie.html">Géologie</a>
+        <a href="hydrogéologie.html">Hydrologie</a>
+    </div>
+    <div class="hero">
+        <h1>AYGIS - La référence en SIG & Géologie</h1>
+        <p>Des solutions innovantes pour l'analyse et la cartographie des territoires</p>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Rechercher des services SIG, géologie, hydrologie...">
+            <button onclick="searchFunction()">🔍</button>
+        </div>
+    </div>
+    <div class="about">
+        <h2>À propos de AYGIS</h2>
+        <p>AYGIS est une entreprise spécialisée dans les <strong>Systèmes d’Information Géographique (SIG)</strong> et les <strong>sciences de la Terre</strong>, offrant des solutions innovantes pour l’analyse, la gestion et la visualisation des données spatiales. Grâce à notre expertise en <strong>ArcGIS, digitalisation, cartographie, hydrogéologie, hydrologie, traitement des images satellites et exploration minière</strong>, nous accompagnons nos clients dans leurs projets en leur fournissant des outils précis et performants.</p>
+        <p>Que ce soit pour la création de cartes détaillées, l'analyse des ressources naturelles ou la gestion des données géospatiales, AYGIS met à votre disposition des technologies de pointe pour transformer vos données en informations stratégiques.</p>
+    </div>
+    <a href="contact.html" class="contact-btn">Contactez-nous</a>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2>AYGIS</h2>
+                <p>La référence en SIG, géologie et hydrologie</p>
+            </div>
+            <div class="footer-center">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="Accueil.html">Accueil</a></li>
+                    <li><a href="services.html">Nos services</a></li>
+                    <li><a href="Apropos.html">À propos</a></li>
+                    <li><a href="contactez-nousNN.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <h3>Suivez-nous</h3>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="30"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="LinkedIn" width="30"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="30"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="year"></span> AYGIS - Tous droits réservés.
+        </div>
+    </footer>
+    
+    <style>
+         /* Style pour la barre de navigation */
+         .navbar {
+            background-color: #004466;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        /* Espace au-dessous de la navbar pour ne pas que le contenu soit masqué */
+        .main-content {
+            margin-top: 60px; /* Hauteur de la barre de navigation */
+        }
+        footer {
+            background-color: #004466;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            padding: 10px;
+        }
+        .footer-container div {
+            margin: 10px;
+        }
+        .footer-container h3 {
+            margin-bottom: 10px;
+        }
+        .footer-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-container ul li {
+            margin: 5px 0;
+        }
+        .footer-container a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer-container img {
+            margin: 5px;
+        }
+        .footer-bottom {
+            margin-top: 15px;
+            font-size: 14px;
+            border-top: 1px solid white;
+            padding-top: 10px;
+        }
+    </style>
+    
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Fonction de recherche
+        function searchFunction() {
+            var query = document.getElementById('searchInput').value.toLowerCase();
+
+            if (query.includes("géologie")) {
+                window.location.href = "services.html"; // Remplacez par l'URL de la page géologie
+            } else if (query.includes("hydrologie")) {
+                window.location.href = "services.html"; // Remplacez par l'URL de la page hydrologie
+            } else if (query.includes("sig")) {
+                window.location.href = "services.html"; // Remplacez par l'URL de la page SIG
+            } else if (query.includes("services")) {
+                window.location.href = "services.html"; // Remplacez par l'URL de la page SIG
+            } else {
+                alert("Aucun résultat trouvé pour votre recherche.");
+            }
+        }
+    </script>
+</body>
+</html>
